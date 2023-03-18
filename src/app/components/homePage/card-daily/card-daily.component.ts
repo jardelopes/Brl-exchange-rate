@@ -1,3 +1,4 @@
+import { DailyValue } from './../../../models/daily-value';
 import { Component, Input } from '@angular/core';
 
 @Component({
@@ -8,5 +9,8 @@ import { Component, Input } from '@angular/core';
 export class CardDailyComponent {
 
   @Input()
-  t!: any[]
+  t!: DailyValue[]
+
+  constructor(){}
+
 }

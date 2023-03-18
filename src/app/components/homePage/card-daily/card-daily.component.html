@@ -34,7 +34,8 @@
                 </div>
                 <div class="row">
                   <div class="col text-start">
-                    <span><strong>Diff: </strong>{{a.diff | percent:"1.2"}}</span>
+                    <strong>Diff: </strong><span *ngIf="a.diff > 0" class="text-success">{{a.diff | percent:"1.2"}}</span>
+                    <span *ngIf="a.diff < 0" class="text-danger">{{a.diff | percent:"1.2"}}</span>
                   </div>
                 </div>
               </div>
