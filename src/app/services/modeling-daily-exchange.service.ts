@@ -1,13 +1,18 @@
+import { BehaviorSubject, Observable } from 'rxjs';
+import { CurrentValue } from './../models/current-value';
 import { DailyValue } from './../models/daily-value';
 import { Injectable } from '@angular/core';
-import { ApiBrlExchangeService } from './api-brl-exchange.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModelingDailyExchangeService {
   dailyValue: Array<DailyValue> = []
-  constructor(private apiBrlExchange : ApiBrlExchangeService) { }
+  value1!: CurrentValue
+  currentValue = new BehaviorSubject<CurrentValue>(this.value1)
+  dataDailyValue!: DailyValue[]
+  dataDaily = new BehaviorSubject<DailyValue[]>(this.dataDailyValue)
+  constructor() { }
 
   getDailyExchangeRate(data : any[]): Array<DailyValue>{
     this.dailyValue = []
@@ -27,5 +32,10 @@ export class ModelingDailyExchangeService {
 
     return this.dailyValue
   }
-
+  setCurrentValue(value: CurrentValue){
+    this.currentValue.next( value)
+  }
+  setDailyData(value: DailyValue[]){
+    this.dataDaily.next(value)
+  }
 }
