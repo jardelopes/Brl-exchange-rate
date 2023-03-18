@@ -1,42 +1,46 @@
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
-      <span class="accordion-button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true"
+      <span class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
         aria-controls="collapseOne">
         LAST 30 DAYS
       </span>
     </h2>
-    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
       data-bs-parent="#accordionExample">
       <div *ngFor="let a of t" class="accordion-body">
         <div class="card">
           <div class="card-body">
-            <div class="row text-primary">
-              <span><strong>{{a.date |date:"dd/MM/yyyy"}}</strong></span>
-            </div>
-            <div class="row">
-              <div class="col">
-                <span><strong>Open: </strong>{{a.open | currency:"BRL"}}</span>
-              </div>
-              <div class="col">
-                <span><strong>High: </strong>{{a.high | currency:"BRL"}}</span>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <span><strong>Close: </strong>{{a.close | currency:"BRL"}}</span>
-              </div>
-              <div class="col">
-                <span><strong>Low: </strong>{{a.low | currency:"BRL"}}</span>
+            <div class="container">
+              <div class="row text-start text-primary d-flex justify-content-start">
+                <div class="col">
+                  <span><strong>{{a.date |date:"dd/MM/yyyy"}}</strong></span>
+                </div>
               </div>
               <div class="row">
-                <div class="col">
-                  <span><strong>Diff: </strong>{{a.diff | percent:"1.2"}}</span>
+                <div class="col text-start">
+                  <span><strong>Open: </strong>{{a.open | currency:"BRL"}}</span>
                 </div>
+                <div class="col text-end">
+                  <span><strong>High: </strong>{{a.high | currency:"BRL"}}</span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col text-start">
+                  <span><strong>Close: </strong>{{a.close | currency:"BRL"}}</span>
+                </div>
+                <div class="col text-end">
+                  <span><strong>Low: </strong>{{a.low | currency:"BRL"}}</span>
+                </div>
+                <div class="row">
+                  <div class="col text-start">
+                    <span><strong>Diff: </strong>{{a.diff | percent:"1.2"}}</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
