@@ -1,3 +1,15 @@
 .btn-primary{
   border-radius: 10rem;
+  background-color: rgb(62, 205, 234);
+  border-color: transparent;
+}
+.form-floating input:focus{
+  border-bottom: 0.20rem solid rgb(62, 205, 234);
+}
+.form-floating input:focus + label,
+.form-floating input:not(:placeholder-shown) + label{
+  color: rgb(62, 205, 234);
+}
+.form-floating input:not(:placeholder-shown){
+  border-bottom: 0.20rem solid rgb(62, 205, 234);
 }
