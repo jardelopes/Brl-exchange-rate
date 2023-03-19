@@ -1,6 +1,5 @@
-import { Observable } from 'rxjs';
-import { ModelingDailyExchangeService } from 'src/app/services/modeling-daily-exchange.service';
-import { CurrentValue } from './../../../models/current-value';
+import { HelperBrlExchangeService } from 'src/app/services/helper-brl-exchange.service';
+import { CurrentValue } from '../../../models/current-value';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,11 +9,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExchangeRateNowComponent implements OnInit {
   currentValue!: CurrentValue
-  constructor(private service: ModelingDailyExchangeService){}
+  constructor(private helperBrlExchange: HelperBrlExchangeService){}
 
 
   ngOnInit(): void {
-    this.service.currentValue.subscribe(
+    this.helperBrlExchange.$currentValue.subscribe(
       res => this.currentValue = res
     )
   }

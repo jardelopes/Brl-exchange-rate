@@ -2,7 +2,7 @@ import { CurrentValue } from './models/current-value';
 import { ApiBrlExchangeService } from './services/api-brl-exchange.service';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { ModelingDailyExchangeService } from './services/modeling-daily-exchange.service';
+import { HelperBrlExchangeService } from './services/helper-brl-exchange.service';
 
 @Component({
   selector: 'app-root',

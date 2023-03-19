@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
-import { DailyValue } from './../../../models/daily-value';
+import { DailyValue } from '../../../models/daily-value';
 import { Component, Input } from '@angular/core';
-import { ModelingDailyExchangeService } from 'src/app/services/modeling-daily-exchange.service';
+import { HelperBrlExchangeService } from 'src/app/services/helper-brl-exchange.service';
 
 @Component({
   selector: 'app-card-daily',
@@ -9,11 +9,10 @@ import { ModelingDailyExchangeService } from 'src/app/services/modeling-daily-ex
   styleUrls: ['./card-daily.component.css']
 })
 export class CardDailyComponent {
-  dailyValue!: any
   $dataDaily!: BehaviorSubject<DailyValue[]>
-  constructor(private service: ModelingDailyExchangeService){}
+  constructor(private helperBrlExchange: HelperBrlExchangeService){}
   ngOnInit(): void {
-    this.$dataDaily = this.service.dataDaily
+    this.$dataDaily = this.helperBrlExchange.$dataDaily
   }
 
 

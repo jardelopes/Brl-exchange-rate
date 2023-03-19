@@ -1,17 +1,17 @@
 import { BehaviorSubject, Observable } from 'rxjs';
-import { CurrentValue } from './../models/current-value';
-import { DailyValue } from './../models/daily-value';
+import { CurrentValue } from '../models/current-value';
+import { DailyValue } from '../models/daily-value';
 import { Injectable } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ModelingDailyExchangeService {
+export class HelperBrlExchangeService {
   dailyValue: Array<DailyValue> = []
   value1!: CurrentValue
-  currentValue = new BehaviorSubject<CurrentValue>(this.value1)
+  $currentValue = new BehaviorSubject<CurrentValue>(this.value1)
   dataDailyValue!: DailyValue[]
-  dataDaily = new BehaviorSubject<DailyValue[]>(this.dataDailyValue)
+  $dataDaily = new BehaviorSubject<DailyValue[]>(this.dataDailyValue)
   constructor() { }
 
   getDailyExchangeRate(data : any[]): Array<DailyValue>{
@@ -25,7 +25,6 @@ export class ModelingDailyExchangeService {
         high: Number(data[i].high),
         diff: Number(((data[i].close - data[i+1].close)/data[i].close))
       }
-      console.log(element)
       if(element != undefined)
         this.dailyValue.push(element)
     }
@@ -33,9 +32,13 @@ export class ModelingDailyExchangeService {
     return this.dailyValue
   }
   setCurrentValue(value: CurrentValue){
-    this.currentValue.next( value)
+    this.$currentValue.next( value)
   }
   setDailyData(value: DailyValue[]){
-    this.dataDaily.next(value)
+    this.$dataDaily.next(value)
+  }
+  resetValues(){
+    this.$dataDaily.next(this.dataDailyValue)
+    this.$currentValue.next(this.value1)
   }
 }

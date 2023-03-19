@@ -1,7 +1,7 @@
 <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
-      <span class="accordion-button collapsed" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
+      <span class="accordion-button collapsed fw-bold" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false"
         aria-controls="collapseOne">
         LAST 30 DAYS
       </span>
@@ -19,23 +19,25 @@
               </div>
               <div class="row">
                 <div class="col text-start">
-                  <span><strong>Open: </strong>{{dailyValue.open | currency:"BRL"}}</span>
+                  <span>OPEN: <span class="fw-semibold">{{dailyValue.open | currency:"BRL"}}</span></span>
                 </div>
                 <div class="col text-end">
-                  <span><strong>High: </strong>{{dailyValue.high | currency:"BRL"}}</span>
+                  <span>HIGH: <span class="fw-semibold">{{dailyValue.high | currency:"BRL"}}</span></span>
                 </div>
               </div>
               <div class="row">
                 <div class="col text-start">
-                  <span><strong>Close: </strong>{{dailyValue.close | currency:"BRL"}}</span>
+                  <span>CLOSE: <span class="fw-semibold">{{dailyValue.close | currency:"BRL"}}</span></span>
                 </div>
                 <div class="col text-end">
-                  <span><strong>Low: </strong>{{dailyValue.low | currency:"BRL"}}</span>
+                  <span>LOW: <span class="fw-semibold">{{dailyValue.low | currency:"BRL"}}</span></span>
                 </div>
                 <div class="row">
                   <div class="col text-start">
-                    <strong>Diff: </strong><span *ngIf="dailyValue.diff > 0" class="text-success">{{dailyValue.diff | percent:"1.2"}}</span>
-                    <span *ngIf="dailyValue.diff < 0" class="text-danger">{{dailyValue.diff | percent:"1.2"}}</span>
+                    <span>CLOSE DIFF (%): </span>
+                    <span *ngIf="dailyValue.diff == 0" class="fw-semibold">{{dailyValue.diff | percent:"1.2"}}</span>
+                    <span *ngIf="dailyValue.diff > 0" class="text-success fw-semibold">+{{dailyValue.diff | percent:"1.2"}}</span>
+                    <span *ngIf="dailyValue.diff < 0" class="text-danger fw-semibold">{{dailyValue.diff | percent:"1.2"}}</span>
                   </div>
                 </div>
               </div>
